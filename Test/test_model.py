@@ -14,6 +14,8 @@ optim.step()
 for batch in data_loader:
     _ = model(batch[0])
 
-train.train(model, data_loader, optim, 10)
+train.train(model, data_loader, optim, 0)
+train.CTR = True
+train.train(model, data_loader, optim, 1)
 visualizer.visualize()
 visualizer.show()
