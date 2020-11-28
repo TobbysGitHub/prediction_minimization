@@ -40,10 +40,10 @@ def train_epoch(model, data_loader, optimizer, ):
         y1, y2, w = model(batch[0])
         if not CTR:
             loss = cal_loss(y1, y2, w)
-            loss.backward()
         else:
             loss = ctr_loss(y1, y2)
-            loss.backward()
+        optimizer.zero_grad()
+        loss.backward()
         optimizer.step()
     pass
 
