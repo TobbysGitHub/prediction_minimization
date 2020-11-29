@@ -18,3 +18,53 @@ optim.step()
 train.train(model, data_loader, optim, 1)
 visualizer.visualize()
 visualizer.show()
+
+train.train(model, data_loader, optim, 1)
+visualizer.visualize()
+visualizer.show()
+
+train.train(model, data_loader, optim, 1)
+visualizer.visualize()
+visualizer.show()
+
+train.train(model, data_loader, optim, 1)
+visualizer.visualize()
+visualizer.show()
+
+train.train(model, data_loader, optim, 1)
+visualizer.visualize()
+visualizer.show()
+
+train.train(model, data_loader, optim, 1)
+visualizer.visualize()
+visualizer.show()
+
+train.train(model, data_loader, optim, 1)
+visualizer.visualize()
+visualizer.show()
+
+train.train(model, data_loader, optim, 1)
+visualizer.visualize()
+visualizer.show()
+
+train.train(model, data_loader, optim, 1)
+visualizer.visualize()
+visualizer.show()
+
+train.train(model, data_loader, optim, 1)
+visualizer.visualize()
+visualizer.show()
+
+train.train(model, data_loader, optim, 1)
+visualizer.visualize()
+visualizer.show()
+
+train.train(model, data_loader, optim, 1)
+visualizer.visualize()
+visualizer.show()
+
+train.train(model, data_loader, optim, 1)
+visualizer.visualize()
+visualizer.show()
+pass
+

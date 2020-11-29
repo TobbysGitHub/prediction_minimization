@@ -20,6 +20,18 @@ def cal_loss(y1, y2, w):
     return loss
 
 
+def cal_loss(y1, y2, w, m):
+    l_1_2 = torch.exp(-torch.abs(y1 - y2).clamp_max(5))  # s_b * n_u
+    l_1_neg = torch.sum(w * torch.exp(-torch.abs(y1.unsqueeze(1) - y1)), dim=1)  # s_b * n_u
+    l_2_neg = torch.sum(w * torch.exp(-torch.abs(y2.unsqueeze(1) - y1)), dim=1)
+
+    loss = -torch.log(l_1_2 / l_1_neg) - torch.log(l_1_2 / l_2_neg)
+    loss = loss.masked_fill(~m, 0)
+    loss = loss.mean()
+
+    return loss
+
+
 def ctr_loss(y1, y2):
     """
     :param y1:  s_b * n_u
@@ -37,9 +49,9 @@ def ctr_loss(y1, y2):
 
 def train_epoch(model, data_loader, optimizer, ):
     for batch in data_loader:
-        y1, y2, w = model(batch[0])
+        y1, y2, w, m = model(batch[0])
         if not CTR:
-            loss = cal_loss(y1, y2, w)
+            loss = cal_loss(y1, y2, w, m)
         else:
             loss = ctr_loss(y1, y2)
         optimizer.zero_grad()

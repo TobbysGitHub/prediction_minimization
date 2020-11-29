@@ -24,12 +24,12 @@ class Model(nn.Module):
 
         x1 = self.add_noise(x)
         y1 = self.encoder(x1)  # s_b * n_u
-        w = self.predictor(y1)  # s_b(q) * s_b * num_units
+        w, mask = self.predictor(y1)  # s_b(q) * s_b * num_units
 
         x2 = self.add_noise(x)
         y2 = self.encoder(x2)
 
-        return y1, y2, w
+        return y1, y2, w, mask
 
     def to_encode(self, x):
         x = x.view(-1, self.width * self.height)
