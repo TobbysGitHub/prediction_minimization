@@ -30,7 +30,7 @@ class Predictor(nn.Module):
         # project to units
         query = self.model(x).squeeze(-1)  # s_b * n_u
 
-        weights = -torch.pow(key - query.unsqueeze(1), 2)  # s_b(q) * s_b(k) * num_units
+        weights = -torch.abs(key - query.unsqueeze(1))  # s_b(q) * s_b(k) * num_units
         weights = weights * self.temperature
 
         weights = torch.softmax(weights, dim=1)
